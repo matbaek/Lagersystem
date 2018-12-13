@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProductLibrary;
+using DatabaseConnection;
 
 namespace Lagersystem
 {
@@ -22,7 +24,8 @@ namespace Lagersystem
                         menuRunning = false;
                         break;
                     case "1":
-
+                        ShowCatalog();
+                        Console.ReadLine();
                         break;
                     default:
                         Console.WriteLine("Menupunktet findes ikke, prøv igen.");
@@ -36,7 +39,7 @@ namespace Lagersystem
         {
             List<string> menu = new List<string>()
             {
-                "punkt1"
+                "Vis katalog"
             };
 
             Console.Clear();
@@ -73,5 +76,15 @@ namespace Lagersystem
         //    Console.Clear();
         //    //Kald til metoden
         //}
+        private void ShowCatalog()
+        {
+            Console.Clear();
+            Product product = new Product();
+            List<Product> products = product.StringToObject();
+            for (int i = 0; i < products.Count; i++)
+            {
+                Console.WriteLine(products[i].ToString());
+            }
+        }
     }
 }

@@ -16,8 +16,22 @@ namespace Lagersystem
 
         void Run()
         {
-            Menu menu = new Menu();
-            menu.ShowMenu();
+            bool checkingLogin = true;
+            while (checkingLogin)
+            {
+                Login login = new Login();
+                if (login.CheckLogin())
+                {
+                    checkingLogin = false;
+                    Menu menu = new Menu();
+                    menu.ShowMenu();
+                }
+                else
+                {
+                    Console.WriteLine("\nLogin fejlede, prøv igen!");
+                    Console.ReadLine();
+                }
+            }
         }
     }
 }
